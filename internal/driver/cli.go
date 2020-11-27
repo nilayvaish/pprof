@@ -249,6 +249,9 @@ func installConfigFlags(flag plugin.FlagSet, cfg *config) func() error {
 					}
 				}
 			}
+		case *[]string:
+			f := flag.StringList(n, "", help)
+			setter = func() { *ptr = *f }
 		}
 		setters = append(setters, setter)
 	}
